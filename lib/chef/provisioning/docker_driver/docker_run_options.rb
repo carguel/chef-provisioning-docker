@@ -333,6 +333,8 @@ class DockerRunOptions
   cli_option :dns_opt, Array,      api: "HostConfig/DnsOptions", aliases: :dns_opts
   #   --dns-search=[]               Set custom DNS search domains
   cli_option :dns_search, Array,   api: "HostConfig/DnsSearch"
+  #   --tmpfs=[]               Set tmpfs mount
+  cli_option :tmpfs, {},   api: "HostConfig/Tmpfs"
   #   --entrypoint=""               Overwrite the default ENTRYPOINT of the image
   cli_option :entrypoint do |config, command|
     command = Shellwords.split(command) if command.is_a?(String)
