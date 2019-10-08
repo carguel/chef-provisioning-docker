@@ -360,7 +360,7 @@ class DockerRunOptions
   #   --group-add=[]                Add additional groups to run as
   cli_option :group_add, Array,    api: 'HostConfig/GroupAdd'
   #   -h, --hostname=""             Container host name
-  cli_option :hostname,            api: 'HostConfig/Hostname', aliases: :h
+  cli_option :hostname,            api: 'Hostname', aliases: :h
   #   -i, --interactive             Keep STDIN open even if not attached
   cli_option :interactive, :boolean, api: [ 'OpenStdin', 'AttachStdin' ]
   #   --ip=""                       Container IPv4 address (e.g. 172.30.100.104)
