@@ -111,10 +111,9 @@ module DockerDriver
       # Create a chef-capable container (just like the final one, but with --net=host
       # and a command that keeps it open). Base it on the image.
       config = container_config(action_handler, machine_spec)
-      config.merge!(
-        'name' => "chef-converge.#{machine_spec.reference['container_name']}",
-        'Cmd' => [ "/bin/sh", "-c", "while true;do sleep 1000; done" ],
-      )
+      config.merge!('name' => "chef-converge.#{machine_spec.reference['container_name']}")
+      config.merge!('Cmd' => [ "/bin/sh", "-c", "while true;do sleep 1000; done" ]) unless config['Cmd']
+
       # If we're using Docker Toolkit, we need to use host networking for the converge
       # so we can open up the port we need. Don't force it in other cases, though.
       if transport.is_local_machine(URI(transport.config[:chef_server_url]).host) &&
